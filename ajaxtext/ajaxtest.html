@@ -1,0 +1,68 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://malsup.github.io/jquery.form.js"></script>
+    <script type="text/javascript">
+
+        function test(){
+
+            $(this).ajaxSubmit({
+                type: 'post', // 提交方式 get/post
+                url: 'testLogin', // 需要提交的 url
+                data: {
+                    'title': 'titleq',
+                    'content': 'gwegq'
+                },
+                success: function(data) { // data 保存提交后返回的数据，一般为 json 数据
+                    // 此处可对 data 作相关处理
+                    alert(data);
+                    alert('提交成功！');
+                }
+                 // 提交后重置表单
+        });
+            return false; // 阻止表单自动提交事件
+
+        }
+        /*function loadXMLDoc(event)
+        {
+            var xmlhttp;
+            event.preventDefault();
+            if (window.XMLHttpRequest)
+            {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {// code for IE6, IE5
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.open("post","chuli",true);
+            xmlhttp.setRequestHeader("Content-type","text/html");
+            var username=document.getElementById('username').value;
+            var password=document.getElementById('password').value;
+            xmlhttp.send(username+"password:"+password);
+
+            xmlhttp.onreadystatechange=function()
+            {
+
+                if (xmlhttp.readyState==1 && xmlhttp.status==200)
+                {
+                    document.getElementById("myDiv").textContent=xmlhttp.responseText;
+                }
+            }
+            document.getElementById("myDiv").textContent=xmlhttp.responseText;
+                   }*/
+    </script>
+</head>
+<body>
+
+<h2>AJAX</h2>
+<form id="form" name="form" method="post"  action="testLogin" onsubmit="return test();" id="saveReportForm">
+    <input  type="submit"   >请求数据</input>
+    <input type="text" name="username" id="username"/>
+    <input type="password" name="password" id="password"/>
+</form>
+<!--<iframe style="display:none" name="hiddenlFrame" id="hiddenIFrame"/>-->
+<div id="msg"></div>
+
+</body>
+</html>
